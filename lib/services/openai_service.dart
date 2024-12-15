@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 class OpenAIService {
   final Dio _dio = Dio();
   final String _baseUrl = 'https://api.openai.com/v1';
-  final String _apiKey; // APIキーは環境変数から取得
+  final String _apiKey;
 
   OpenAIService(this._apiKey) {
     _dio.options.baseUrl = _baseUrl;
@@ -18,7 +18,7 @@ class OpenAIService {
       final response = await _dio.post(
         '/chat/completions',
         data: {
-          'model': 'gpt-3.5-turbo',
+          'model': 'gpt-4', // Changed from gpt-3.5-turbo to gpt-4
           'messages': [
             {'role': 'user', 'content': message}
           ],
